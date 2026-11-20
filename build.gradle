@@ -1,8 +1,11 @@
-plugins { id 'com.android.application' }
+plugins {
+    id 'com.android.application'
+}
 
 android {
     namespace 'ir.noragold.calculator'
     compileSdk 35
+
     defaultConfig {
         applicationId 'ir.noragold.calculator'
         minSdk 23
