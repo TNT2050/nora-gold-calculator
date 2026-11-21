@@ -3,7 +3,7 @@ name: Build Nora Gold APK
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [ main, nora-invoice-only ]
     paths:
       - 'app/**'
       - 'build.gradle'
