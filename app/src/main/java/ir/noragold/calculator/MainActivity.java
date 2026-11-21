@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.webkit.WebResourceRequest;
+import android.content.Intent;
+import android.net.Uri;
 import android.graphics.Color;
 
 public class MainActivity extends Activity {
@@ -24,7 +27,23 @@ public class MainActivity extends Activity {
         settings.setAllowContentAccess(false);
         settings.setSupportZoom(false);
         settings.setDefaultTextEncodingName("UTF-8");
-        webView.setWebViewClient(new WebViewClient());
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                Uri uri = request.getUrl();
+                String scheme = uri.getScheme();
+                if (scheme != null && (scheme.equalsIgnoreCase("https") || scheme.equalsIgnoreCase("http"))) {
+                    try {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                        startActivity(intent);
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+                return false;
+            }
+        });
         setContentView(webView);
         if (savedInstanceState == null) {
             webView.loadUrl("file:///android_asset/index.html");
