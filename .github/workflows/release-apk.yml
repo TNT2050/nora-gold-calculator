@@ -7,9 +7,9 @@ on:
       - 'app/build.gradle'
       - 'app/src/main/assets/index.html'
       - '.github/workflows/release-apk.yml'
-  workflow_dispatch:
     tags:
       - 'v*'
+  workflow_dispatch:
 
 permissions:
   contents: write
