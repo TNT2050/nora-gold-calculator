@@ -8,8 +8,8 @@ on:
       - 'app/src/main/assets/index.html'
       - '.github/workflows/release-apk.yml'
   workflow_dispatch:
-  push_tags:
-    - 'v*'
+    tags:
+      - 'v*'
 
 permissions:
   contents: write
