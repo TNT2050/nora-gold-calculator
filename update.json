@@ -1,6 +1,6 @@
 {
-  "version": "1.4",
-  "notes": "نسخه ۱.۴: اصلاح چاپ فاکتور مغازه و باز شدن پنجره چاپ اندروید برای چاپ کاغذی یا ذخیره PDF؛ همراه با بهبود نمایش فاکتور.",
+  "version": "1.5",
+  "notes": "نسخه ۱.۵: افزودن تخفیف درصدی و مبلغی به فاکتور فروش مغازه؛ امکان کسر مبلغ دقیق برای رُند کردن مبلغ نهایی و نمایش تخفیف در نسخه چاپی فاکتور.",
   "apkUrl": "https://github.com/TNT2050/nora-gold-calculator/releases/latest/download/app-debug.apk",
   "releaseUrl": "https://github.com/TNT2050/nora-gold-calculator/releases/latest"
 }
