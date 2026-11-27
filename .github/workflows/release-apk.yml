@@ -6,6 +6,9 @@ on:
     paths:
       - 'app/build.gradle'
       - 'app/src/main/assets/index.html'
+      - 'app/src/main/java/ir/noragold/calculator/MainActivity.java'
+      - 'app/src/main/AndroidManifest.xml'
+      - 'nora-debug.keystore'
       - '.github/workflows/release-apk.yml'
   workflow_dispatch:
 
@@ -43,7 +46,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
-      - name: Prepare icon and validate JavaScript
+      - name: Prepare icon, logo and validate JavaScript
         if: steps.exists.outputs.exists != 'true'
         run: |
           mkdir -p app/src/main/res/mipmap-nodpi
@@ -54,10 +57,10 @@ jobs:
           html = open('app/src/main/assets/index.html', encoding='utf-8').read()
           scripts = re.findall(r'<script>(.*?)</script>', html, re.S)
           assert scripts, 'No application JavaScript found'
-          open('/tmp/nora-gold.js', 'w', encoding='utf-8').write('\n'.join(scripts))
+          open('/tmp/nora-gold.js', 'w', encoding='utf-8').write('\\n'.join(scripts))
           PY
           node --check /tmp/nora-gold.js
-      - name: Build APK
+      - name: Build APK with stable app signing
         if: steps.exists.outputs.exists != 'true'
         run: gradle --no-daemon :app:assembleDebug
       - name: Publish APK release
