@@ -48,6 +48,7 @@ jobs:
         run: |
           mkdir -p app/src/main/res/mipmap-nodpi
           base64 --decode app/src/main/assets/launcher_icon.b64 > app/src/main/res/mipmap-nodpi/ic_launcher.jpg
+          base64 --decode app/src/main/assets/nora-logo.b64 > app/src/main/assets/nora-logo.jpg
           python3 - <<'PY'
           import re
           html = open('app/src/main/assets/index.html', encoding='utf-8').read()
