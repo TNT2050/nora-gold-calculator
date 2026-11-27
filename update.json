@@ -1,6 +1,6 @@
 {
-  "version": "1.3",
-  "notes": "نسخه ۱.۳: دانلود مستقیم APK داخل برنامه با اعلان پیشرفت دانلود و باز کردن نصب‌کننده اندروید. نصب نهایی با تأیید کاربر انجام می‌شود.",
+  "version": "1.4",
+  "notes": "نسخه ۱.۴: اصلاح چاپ فاکتور مغازه و باز شدن پنجره چاپ اندروید برای چاپ کاغذی یا ذخیره PDF؛ همراه با بهبود نمایش فاکتور.",
   "apkUrl": "https://github.com/TNT2050/nora-gold-calculator/releases/latest/download/app-debug.apk",
   "releaseUrl": "https://github.com/TNT2050/nora-gold-calculator/releases/latest"
 }
