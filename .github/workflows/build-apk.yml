@@ -1,4 +1,5 @@
 name: Build Nora Gold APK
+# Trigger fresh build for Nora Gold v1.5 invoice discount update
 
 on:
   workflow_dispatch:
