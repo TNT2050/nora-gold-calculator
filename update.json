@@ -1,6 +1,6 @@
 {
-  "version": "1.7",
-  "notes": "نسخه ۱.۷: اصلاح قالب چاپ فاکتور فروش مغازه، حفظ تاریخ شمسی، تخفیف درصدی و مبلغی و رفع خطای ساخت نسخه اندروید.",
+  "version": "1.8",
+  "notes": "نسخه ۱.۸: اصلاح نمایش اطلاعات متغیر در چاپ فاکتور فروش طلا و جواهر؛ شماره، تاریخ، خریدار، ردیف کالاها، جمع و پرداخت‌ها به‌درستی جایگذاری می‌شوند.",
   "apkUrl": "https://github.com/TNT2050/nora-gold-calculator/releases/latest/download/app-debug.apk",
   "releaseUrl": "https://github.com/TNT2050/nora-gold-calculator/releases/latest"
 }
