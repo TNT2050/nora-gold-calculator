@@ -18,9 +18,13 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.graphics.Color;
 import android.database.Cursor;
+import android.print.PrintManager;
+import android.print.PrintAttributes;
+import android.print.PrintDocumentAdapter;
 
 public class MainActivity extends Activity {
     private WebView webView;
+    private WebView printWebView;
     private DownloadManager downloadManager;
     private long activeDownloadId = -1L;
     private Uri pendingInstallUri;
@@ -90,6 +94,39 @@ public class MainActivity extends Activity {
     private class UpdateBridge {
         @JavascriptInterface public void downloadApk(String url) {
             runOnUiThread(() -> startApkDownload(url));
+        }
+        @JavascriptInterface public void printInvoice(String html) {
+            runOnUiThread(() -> startInvoicePrint(html));
+        }
+    }
+
+    private void startInvoicePrint(String html) {
+        try {
+            if (printWebView != null) {
+                printWebView.destroy();
+                printWebView = null;
+            }
+            printWebView = new WebView(this);
+            printWebView.getSettings().setJavaScriptEnabled(false);
+            printWebView.setWebViewClient(new WebViewClient() {
+                @Override public void onPageFinished(WebView view, String url) {
+                    PrintManager manager = (PrintManager) getSystemService(Context.PRINT_SERVICE);
+                    if (manager == null) {
+                        showStatus("سرویس چاپ اندروید در دسترس نیست");
+                        return;
+                    }
+                    PrintDocumentAdapter adapter = view.createPrintDocumentAdapter("Nora-Gold-Invoice");
+                    PrintAttributes attributes = new PrintAttributes.Builder()
+                        .setMediaSize(PrintAttributes.MediaSize.ISO_A4)
+                        .setMinMargins(PrintAttributes.Margins.NO_MARGINS)
+                        .build();
+                    manager.print("فاکتور نورا گلد", adapter, attributes);
+                    showStatus("فاکتور آماده چاپ یا ذخیره PDF است");
+                }
+            });
+            printWebView.loadDataWithBaseURL("file:///android_asset/", html, "text/html", "UTF-8", null);
+        } catch (Exception e) {
+            showStatus("باز کردن چاپگر اندروید ناموفق بود؛ دوباره تلاش کنید");
         }
     }
 
@@ -165,6 +202,7 @@ public class MainActivity extends Activity {
     @Override protected void onDestroy() {
         if (receiverRegistered) { try { unregisterReceiver(downloadReceiver); } catch (Exception ignored) {} }
         if (webView != null) webView.destroy();
+        if (printWebView != null) printWebView.destroy();
         super.onDestroy();
     }
 
