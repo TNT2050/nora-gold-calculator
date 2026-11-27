@@ -1,6 +1,6 @@
 {
-  "version": "1.6",
-  "notes": "نسخه ۱.۶: نمایش تاریخ شمسی در چاپ فاکتور فروش مغازه و اصلاح مقداردهی تاریخ بر اساس ساعت محلی دستگاه؛ حفظ تاریخ قابل ویرایش و امکانات تخفیف نسخه ۱.۵.",
+  "version": "1.7",
+  "notes": "نسخه ۱.۷: اصلاح قالب چاپ فاکتور فروش مغازه، حفظ تاریخ شمسی، تخفیف درصدی و مبلغی و رفع خطای ساخت نسخه اندروید.",
   "apkUrl": "https://github.com/TNT2050/nora-gold-calculator/releases/latest/download/app-debug.apk",
   "releaseUrl": "https://github.com/TNT2050/nora-gold-calculator/releases/latest"
 }
